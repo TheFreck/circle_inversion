@@ -1,5 +1,3 @@
-
-
 export const FormControls = {
   CircleControls: ({ setCircleX, circleX, setCircleY, circleY, setCircleR, circleR }) => <div>
     <label>X: </label>
@@ -46,12 +44,18 @@ export const FormControls = {
     <label>Center Y</label>
     <input type="number" value={triY} onChange={(y) => y.target.value ? setTriY(parseInt(y.target.value)) : 0} />
   </>,
-  PointControls: ({setPointX,pointX,setPointY,pointY}) => <>
+  PointControls: ({setPointX,pointX,setPointY,pointY,addPoint,points}) => <>
+    {
+      points.map((p,i) => (
+        <div key={i}>({p.x}, {p.y})</div>
+      ))
+    }
     <label>X: </label>
     <input type="number" value={pointX} onChange={(x) => x.target.value ? setPointX(parseInt(x.target.value)) : 0} />
     <label>Y: </label>
     <input type="number" value={pointY} onChange={(y) => y.target.value ? setPointY(parseInt(y.target.value)) : 0} />
     <br />
+    <button onClick={addPoint}>Add</button>
   </>
 }
 
